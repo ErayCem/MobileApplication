@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // "Create an Account" butonuna tıklama işlemi
+        // "Create an Account" butonuna tıklama işlemid
         val btnCreateAccount = findViewById<Button>(R.id.btnCreateAccount)
         btnCreateAccount.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
