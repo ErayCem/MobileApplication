@@ -9,16 +9,20 @@
     tools:context=".welcomescreen">
 
     <!-- ImageView -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="140dp"
-        android:src="@drawable/baloon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/uiPleaseLogIn"
-        tools:layout_editor_absoluteX="0dp" />
 
     <!-- İlk TextView -->
+
+    <ImageView
+        android:layout_width="203dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="120dp"
+        android:src="@drawable/baloon"
+        app:layout_constraintBottom_toTopOf="@+id/uiPleaseLogIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/uiPleaseLogIn"
         android:layout_width="wrap_content"
@@ -46,12 +50,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Register Button -->
+
+    <!-- Login Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginHorizontal="36dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/bg_round"
         android:backgroundTint="#48FFFFFF"
         android:elevation="20dp"
@@ -61,10 +67,9 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Login Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
