@@ -11,8 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 import android.view.View
 
-import com.google.android.material.textfield.TextInputLayout
-
 class NewPage : AppCompatActivity() {
 
     // Görünümler için val tanımları
@@ -24,6 +22,9 @@ class NewPage : AppCompatActivity() {
 
     private val nextButton: Button
         get() = findViewById(R.id.btnContinue)
+
+    private val createAccountButton: Button
+        get() = findViewById(R.id.btnCreateAccount)
 
     private val mainLayout: View
         get() = findViewById(R.id.main)
@@ -57,15 +58,20 @@ class NewPage : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Sabit kimlik bilgileriyle kontrol
-            if (email == "test@te.st" && password == "1234") {
-                // MainActivity'ye yönlendir
+            if (CredentialsManager.login(email, password)) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
-                // Yanlış kimlik bilgisi hatası
                 Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
             }
+
+        }
+
+        // Create Account düğmesine tıklama olayını dinleyici ekleyin
+        createAccountButton.setOnClickListener {
+            // RegisterExplora aktivitesine geçiş
+            val intent = Intent(this, register_explora::class.java)
+            startActivity(intent)
         }
     }
 }
