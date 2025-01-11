@@ -1,12 +1,13 @@
 package com.example.loginapp
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.loginapp.model.Recipe
 
@@ -19,8 +20,8 @@ class RecipeAdapter(private val recipeList: List<Recipe>) : RecyclerView.Adapter
         val recipeImage: ImageView = itemView.findViewById(R.id.recipeImage)
         val recipeName: TextView = itemView.findViewById(R.id.recipeName)
         val recipeDescription: TextView = itemView.findViewById(R.id.recipeDescription)
-        val recipeButton: TextView = itemView.findViewById(R.id.recipeButton)  // Like/Share butonunu burada tanımlayın
-        val shareButton: TextView = itemView.findViewById(R.id.shareButton)  // Share butonunu burada tanımlayın
+        val recipeButton: TextView = itemView.findViewById(R.id.recipeButton)  // Like butonunu burada tanımlayın
+        val shareButton: TextView = itemView.findViewById(R.id.shareButton)    // Share butonunu burada tanımlayın
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -36,12 +37,18 @@ class RecipeAdapter(private val recipeList: List<Recipe>) : RecyclerView.Adapter
         holder.recipeName.text = currentRecipe.name
         holder.recipeDescription.text = currentRecipe.description
 
-        // Item tıklama olayları
+        // Liste öğesi tıklama olayı
         holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(currentRecipe)
-            // Tıklanan öğe hakkında bilgi verir
-            Toast.makeText(it.context, "Item clicked: ${currentRecipe.name}", Toast.LENGTH_SHORT).show()
-            Log.d("RecipeAdapter", "Item clicked: ${currentRecipe.name}")
+            val context = it.context
+            val intent = Intent(context, RecipeDetailActivity::class.java)
+
+            // Intent ile bilgileri gönder
+            intent.putExtra("RECIPE_ID", currentRecipe.id)
+            intent.putExtra("RECIPE_NAME", currentRecipe.name)
+            intent.putExtra("RECIPE_IMAGE", currentRecipe.image)
+            intent.putExtra("RECIPE_DESCRIPTION", currentRecipe.description)
+
+            context.startActivity(intent) // Detay ekranını aç
         }
 
         // "Like" butonuna tıklama olayları

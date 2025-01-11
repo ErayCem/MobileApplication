@@ -21,15 +21,11 @@
         <activity
             android:name=".SampleActivity"
             android:exported="false" />
-        <activity
-            android:name=".welcomescreen"
-            android:exported="false" />
+
         <activity
             android:name=".register_explora"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
