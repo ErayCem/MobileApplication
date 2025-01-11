@@ -38,6 +38,9 @@
         android:layout_marginBottom="32dp"
         android:textSize="14sp"/>
 
+
+
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -85,6 +88,8 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/uiOr"/>
+
+
 
     <EditText
         android:layout_width="match_parent"

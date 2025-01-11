@@ -59,7 +59,7 @@ class NewPage : AppCompatActivity() {
             }
 
             if (CredentialsManager.login(email, password)) {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, register_explora::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()

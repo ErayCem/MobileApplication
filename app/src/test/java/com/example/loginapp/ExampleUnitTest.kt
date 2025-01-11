@@ -4,6 +4,16 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
+
+object SomeSingleton{
+    val someField=1
+}
+
+
+
+
+
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
