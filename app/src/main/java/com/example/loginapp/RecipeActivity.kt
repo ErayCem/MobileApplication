@@ -30,7 +30,7 @@ class RecipeActivity : AppCompatActivity() {
         // LayoutManager'ı ayarla
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Adapter'ı oluştur
+        // Adapter'ı oluştur ve recipeList'i geçir
         val adapter = RecipeAdapter(recipeList)
 
         // Adapter'ı RecyclerView'a bağla

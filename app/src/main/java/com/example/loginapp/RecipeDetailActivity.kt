@@ -1,20 +1,30 @@
 package com.example.loginapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class RecipeDetailActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_recipe_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        // XML'deki View'ları bul
+        val recipeImage = findViewById<ImageView>(R.id.recipeDetailImage)
+        val recipeName = findViewById<TextView>(R.id.recipeDetailName)
+        val recipeDescription = findViewById<TextView>(R.id.recipeDetailDescription)
+
+        // Intent ile gelen verileri al
+        val recipeId = intent.getIntExtra("RECIPE_ID", -1)
+        val recipeNameText = intent.getStringExtra("RECIPE_NAME")
+        val recipeImageRes = intent.getIntExtra("RECIPE_IMAGE", -1)
+        val recipeDescriptionText = intent.getStringExtra("RECIPE_DESCRIPTION")
+
+        // Verileri ekrana yerleştir
+        recipeImage.setImageResource(recipeImageRes)
+        recipeName.text = recipeNameText
+        recipeDescription.text = recipeDescriptionText
     }
 }
