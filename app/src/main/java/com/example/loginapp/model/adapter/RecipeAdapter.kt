@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.loginapp.model.Recipe
 
-class RecipeAdapter(private val recipeList: List<Recipe>) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(private var recipeList: List<Recipe>) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     private var onItemClickListener: ((Recipe) -> Unit)? = null
 
@@ -62,6 +62,13 @@ class RecipeAdapter(private val recipeList: List<Recipe>) : RecyclerView.Adapter
 
     override fun getItemCount() = recipeList.size
 
+    // Tarifleri güncellemek için fonksiyon
+    fun updateRecipes(newRecipes: List<Recipe>) {
+        recipeList = newRecipes
+        notifyDataSetChanged() // Listeyi güncelledikten sonra RecyclerView'u bilgilendir
+    }
+
+    // Tıklama olaylarını set etmek için bir fonksiyon
     fun setOnItemClickListener(listener: (Recipe) -> Unit) {
         onItemClickListener = listener
     }

@@ -26,9 +26,7 @@
             android:name=".register_explora"
             android:exported="false" />
 
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
+
         <activity
             android:name=".RecipeActivity"
             android:exported="true">

@@ -1,3 +1,5 @@
+package com.example.loginapp
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.SearchView
-import com.example.loginapp.R
-import com.example.loginapp.RecipeAdapter
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
+// Model paketi içinde Recipe sınıfını doğru şekilde import ettiğimize emin olalım
+import com.example.loginapp.model.Recipe
 
 class RecipesFragment : Fragment(R.layout.fragment_recipes) {
 
@@ -47,10 +49,15 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
         })
 
         lifecycleScope.launch {
-            viewModel.recipes.collect { recipes ->
-                // ViewModel'den gelen tarife listesini adapte ediyoruz
-                adapter = RecipeAdapter(recipes) // Burada yeni listeyi geçiyoruz
-                recyclerView.adapter = adapter
+            viewModel.uiState.collect { uiState ->
+                // ViewModel'den gelen tarif listesini adapte ediyoruz
+                // Yükleniyor durumunu kontrol ediyoruz
+                if (uiState.isLoading) {
+                    // Yükleniyor animasyonu eklenebilir
+                } else {
+                    adapter = RecipeAdapter(uiState.recipes) // Burada yeni listeyi geçiyoruz
+                    recyclerView.adapter = adapter
+                }
             }
         }
 
